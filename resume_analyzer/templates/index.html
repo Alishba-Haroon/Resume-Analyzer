@@ -1,0 +1,89 @@
+<!-- Home Page -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Analyzer - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1> AI Resume Analyzer</h1>
+            </div> 
+            <nav>
+                <a href="{{ url_for('index') }}" class="nav-link active">Home</a>
+                <a href="{{ url_for('upload_resume') }}" class="nav-link">Analyze Resume</a>
+                <a href="{{ url_for('history') }}" class="nav-link">History</a>
+                <a href="{{ url_for('demo') }}" class="nav-link">Demo</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="card">
+                <h2>Welcome to AI Resume Analyzer</h2>
+                <p>Our AI-powered tool analyzes your resume and provides detailed feedback to help you:</p>
+                
+                
+                <div style="text-align: center; margin-top: 50px">
+                    <a href="{{ url_for('upload_resume') }}" class="btn">Start Analyzing Your Resume</a>
+                    <a href="{{ url_for('demo') }}" class="btn btn-secondary" style="margin-left: 15px;">View Demo</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>How It Works</h2>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3>1. Upload Resume</h3>
+                        <p>Upload your resume in PDF, DOCX, or TXT format</p>
+                    </div>
+                    
+                    <div class="result-card">
+                        <h3>2. Add Job Description</h3>
+                        <p>Optionally add a job description for targeted analysis</p>
+                    </div>
+                    
+                    <div class="result-card">
+                        <h3>3. AI Analysis</h3>
+                        <p>Our AI extracts skills, calculates ATS score, and provides feedback</p>
+                    </div>
+                    
+                    <div class="result-card">
+                        <h3>4. Get Results</h3>
+                        <p>Receive detailed analysis and improvement suggestions</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Why Use Our Resume Analyzer?</h2>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
+                        <strong>✅ Free & Unlimited:</strong> No hidden costs, no limits on analysis
+                    </li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
+                        <strong>🔒 Privacy Protected:</strong> Your resume is not stored permanently
+                    </li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
+                        <strong>🤖 AI-Powered:</strong> Advanced NLP algorithms for accurate analysis
+                    </li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
+                        <strong>💼 Job-Specific:</strong> Tailor your resume for specific job applications
+                    </li>
+                    <li style="padding: 10px 0;">
+                        <strong>📈 Continuous Improvement:</strong> Track your progress over time
+                    </li>
+                </ul>
+            </div>
+        </main>
+
+        <footer>
+            <p>AI Resume Analyzer &copy; 2024 | Free Open Source Tool</p>
+            <p>Made with ❤️ for job seekers worldwide</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis History - AI Resume Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>📋 Analysis History</h1>
+            </div>
+            <p class="tagline">View your previous resume analyses</p>
+            
+            <nav>
+                <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                <a href="{{ url_for('upload_resume') }}" class="nav-link">Analyze Resume</a>
+                <a href="{{ url_for('history') }}" class="nav-link active">History</a>
+                <a href="{{ url_for('demo') }}" class="nav-link">Demo</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="card">
+                <h2>Previous Analyses</h2>
+                
+                {% if history %}
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>File Name</th>
+                            <th>ATS Score</th>
+                            <th>Skills Found</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in history %}
+                        <tr>
+                            <td>{{ item.created_at }}</td>
+                            <td>{{ item.filename }}</td>
+                            <td>
+                                <span class="score-value {{ 'score-high' if item.ats_score >= 80 else 'score-medium' if item.ats_score >= 60 else 'score-low' }}">
+                                    {{ item.ats_score }}
+                                </span>
+                            </td>
+                            <td>
+                                {% if item.skills %}
+                                    {% for skill in item.skills[:3] %}
+                                        <span class="skill-tag">{{ skill }}</span>
+                                    {% endfor %}
+                                    {% if item.skills|length > 3 %}
+                                        <span class="skill-tag">+{{ item.skills|length - 3 }} more</span>
+                                    {% endif %}
+                                {% else %}
+                                    <span style="color: #999;">No skills recorded</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <div style="text-align: center; padding: 40px;">
+                    <div style="font-size: 4rem; color: #c7d2fe;">📋</div>
+                    <h3 style="color: #666; margin: 20px 0;">No analysis history found</h3>
+                    <p style="color: #999; margin-bottom: 30px;">Analyze your first resume to see it here!</p>
+                    <a href="{{ url_for('upload_resume') }}" class="btn">Analyze Resume Now</a>
+                </div>
+                {% endif %}
+            </div>
+        </main>
+
+        <footer>
+            <p>AI Resume Analyzer &copy; 2024 | History is stored locally on your device</p>
+        </footer>
+    </div>
+</body>
+</html>

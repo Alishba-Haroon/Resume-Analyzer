@@ -1,0 +1,192 @@
+<!-- Resume Upload Page -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Resume - AI Resume Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>📄 Upload Resume</h1>
+            </div>
+            <p class="tagline">Upload your resume for AI-powered analysis</p>
+            
+            <nav>
+                <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                <a href="{{ url_for('upload_resume') }}" class="nav-link active">Analyze Resume</a>
+                <a href="{{ url_for('history') }}" class="nav-link">History</a>
+                <a href="{{ url_for('demo') }}" class="nav-link">Demo</a>
+            </nav>
+        </header>
+
+        <main>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ 'error' if category == 'error' else 'success' }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <div class="card">
+                <h2>Upload Your Resume</h2>
+                <p style="margin-bottom: 30px;">Supported formats: PDF, DOCX, TXT (Max 5MB)</p>
+                
+                <form action="{{ url_for('upload_resume') }}" method="POST" enctype="multipart/form-data" id="uploadForm">
+                    <div class="form-group">
+                        <label for="resume">Select Resume File</label>
+                        <div class="upload-area" id="dropArea">
+                            <div style="font-size: 4rem;">📄</div>
+                            <p style="font-size: 1.2rem; margin: 15px 0;">Drag & drop your resume here</p>
+                            <p style="color: #666; margin-bottom: 20px;">or</p>
+                            <label for="resume" class="btn">Browse Files</label>
+                            <input type="file" id="resume" name="resume" class="file-input" accept=".pdf,.docx,.txt" required>
+                            <p id="fileName" style="margin-top: 15px; color: #4f46e5;"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="job_description">Job Description (Optional)</label>
+                        <textarea 
+                            id="job_description" 
+                            name="job_description" 
+                            class="form-control" 
+                            placeholder="Paste the job description here for targeted analysis. This helps us provide more specific feedback..."
+                            rows="6"></textarea>
+                        <p style="color: #666; font-size: 0.9rem; margin-top: 5px;">
+                            Adding a job description helps calculate how well your resume matches specific requirements.
+                        </p>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 30px;">
+                        <button type="submit" class="btn" style="padding: 15px 40px; font-size: 1.1rem;">
+                            Analyze Resume
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card">
+                <h2>Tips for Best Results</h2>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3>📝 Use Clear Formatting</h3>
+                        <p>Avoid complex layouts. Use standard headings and bullet points.</p>
+                    </div>
+                    
+                    <div class="result-card">
+                        <h3>🔑 Include Keywords</h3>
+                        <p>Use industry-specific keywords that match your target job.</p>
+                    </div>
+                    
+                    <div class="result-card">
+                        <h3>📏 Optimal Length</h3>
+                        <p>Keep your resume to 1-2 pages for best ATS compatibility.</p>
+                    </div>
+                    
+                    <div class="result-card">
+                        <h3>🎯 Be Specific</h3>
+                        <p>Include quantifiable achievements and specific skills.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>AI Resume Analyzer &copy; 2024</p>
+        </footer>
+    </div>
+
+    <script>
+        // Drag and drop functionality
+        const dropArea = document.getElementById('dropArea');
+        const fileInput = document.getElementById('resume');
+        const fileName = document.getElementById('fileName');
+        
+        // Prevent default drag behaviors
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+            document.body.addEventListener(eventName, preventDefaults, false);
+        });
+        
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
+        // Highlight drop area when item is dragged over it
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, highlight, false);
+        });
+        
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, unhighlight, false);
+        });
+        
+        function highlight() {
+            dropArea.classList.add('dragover');
+        }
+        
+        function unhighlight() {
+            dropArea.classList.remove('dragover');
+        }
+        
+        // Handle dropped files
+        dropArea.addEventListener('drop', handleDrop, false);
+        
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            fileInput.files = files;
+            handleFiles(files);
+        }
+        
+        // Handle file input change
+        fileInput.addEventListener('change', function() {
+            handleFiles(this.files);
+        });
+        
+        function handleFiles(files) {
+            if (files.length > 0) {
+                const file = files[0];
+                fileName.textContent = `Selected: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
+                
+                // Validate file size (5MB limit)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File size exceeds 5MB limit. Please choose a smaller file.');
+                    fileInput.value = '';
+                    fileName.textContent = '';
+                }
+                
+                // Validate file type
+                const validTypes = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'text/plain'];
+                if (!validTypes.includes(file.type) && !file.name.match(/\.(pdf|docx|txt)$/i)) {
+                    alert('Invalid file type. Please upload PDF, DOCX, or TXT files only.');
+                    fileInput.value = '';
+                    fileName.textContent = '';
+                }
+            }
+        }
+        
+        // Form submission
+        document.getElementById('uploadForm').addEventListener('submit', function(e) {
+            if (!fileInput.files.length) {
+                e.preventDefault();
+                alert('Please select a resume file to upload.');
+                return false;
+            }
+            
+            // Show loading
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.innerHTML = 'Analyzing... Please wait';
+            submitBtn.disabled = true;
+        });
+    </script>
+</body>
+</html>

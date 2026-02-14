@@ -1,0 +1,176 @@
+<!-- Result Page -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results - AI Resume Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>📊 Analysis Results</h1>
+            </div>
+            <p class="tagline">Detailed analysis of your resume</p>
+            
+            <nav>
+                <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                <a href="{{ url_for('upload_resume') }}" class="nav-link">Analyze Another</a>
+                <a href="{{ url_for('history') }}" class="nav-link">History</a>
+                <a href="{{ url_for('demo') }}" class="nav-link">Demo</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2>Resume Analysis Report</h2>
+                    <span class="skill-tag">{{ result.upload_time }}</span>
+                </div>
+                
+                <p><strong>File:</strong> {{ result.filename }}</p>
+                {% if result.job_description %}
+                <p><strong>Job Description:</strong> {{ result.job_description[:100] }}...</p>
+                {% endif %}
+            </div>
+
+            <!-- ATS Score Card -->
+            <div class="card">
+                <h2>ATS Compatibility Score</h2>
+                <div class="score-container">
+                    <div class="score-circle" style="--score-percent: {{ result.ats_score }}%">
+                        <div class="score-inner">
+                            <div class="score-value {{ 'score-high' if result.ats_score >= 80 else 'score-medium' if result.ats_score >= 60 else 'score-low' }}">
+                                {{ result.ats_score }}
+                            </div>
+                            <div class="score-label">out of 100</div>
+                        </div>
+                    </div>
+                    
+                    <p style="max-width: 600px; margin: 0 auto 30px; color: #666;">
+                        {% if result.ats_score >= 80 %}
+                        🎉 Excellent! Your resume has high compatibility with Applicant Tracking Systems.
+                        {% elif result.ats_score >= 60 %}
+                        👍 Good! Your resume has decent ATS compatibility but could be improved.
+                        {% else %}
+                        ⚠️ Needs improvement. Consider following the suggestions below to increase your ATS score.
+                        {% endif %}
+                    </p>
+                </div>
+                
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3>What is ATS Score?</h3>
+                        <p>ATS (Applicant Tracking System) score measures how well your resume can be read and parsed by automated recruitment software used by most companies.</p>
+                    </div>
+                    
+                    <div class="result-card">
+                        <h3>How to Improve?</h3>
+                        <p>Use standard formatting, include relevant keywords, avoid graphics/tables, and use clear section headings.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Analysis -->
+            <div class="card">
+                <h2>Skills Analysis</h2>
+                <p style="margin-bottom: 20px;">Found {{ result.total_skills }} skills in your resume</p>
+                
+                <div class="skills-container">
+                    {% for skill in result.skills %}
+                    <span class="skill-tag">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Job Fit Analysis -->
+            {% if result.job_fit %}
+            <div class="card">
+                <h2>Job Fit Analysis</h2>
+                
+                <div style="text-align: center; margin: 30px 0;">
+                    <div style="font-size: 3rem; color: #4f46e5; margin-bottom: 10px;">
+                        {{ result.job_fit.match_percentage }}%
+                    </div>
+                    <p style="color: #666;">Match with Job Description</p>
+                </div>
+                
+                <div class="results-grid">
+                    {% if result.job_fit.strong_matches %}
+                    <div class="result-card">
+                        <h3>✅ Strong Matches</h3>
+                        <div class="skills-container" style="margin-top: 10px;">
+                            {% for skill in result.job_fit.strong_matches %}
+                            <span class="skill-tag" style="background: #d1fae5; color: #065f46;">{{ skill }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if result.job_fit.missing_skills %}
+                    <div class="result-card">
+                        <h3>📝 Skills to Add</h3>
+                        <p style="margin: 10px 0;">Consider adding these skills to better match the job:</p>
+                        <div class="skills-container">
+                            {% for skill in result.job_fit.missing_skills %}
+                            <span class="skill-tag" style="background: #fee2e2; color: #991b1b;">{{ skill }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Improvement Suggestions -->
+            <div class="card">
+                <h2>💡 Improvement Suggestions</h2>
+                
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3>Keywords</h3>
+                        <p>Make sure to include specific keywords from the job description in your resume.</p>
+                    </div>
+                    
+                    <div class="result-card">
+                        <h3>Quantifiable Achievements</h3>
+                        <p>Use numbers and metrics to demonstrate your accomplishments (e.g., "Increased sales by 20%").</p>
+                    </div>
+                    
+                    <div class="result-card">
+                        <h3>Formatting</h3>
+                        <p>Use standard fonts (Arial, Calibri), clear headings, and simple bullet points.</p>
+                    </div>
+                    
+                    <div class="result-card">
+                        <h3>Length</h3>
+                        <p>Keep your resume to 1-2 pages. Remove outdated or irrelevant information.</p>
+                    </div>
+                </div>
+                
+                <div style="background: #e0f2fe; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <h3 style="color: #075985; margin-bottom: 10px;">Pro Tip</h3>
+                    <p style="color: #075985; margin: 0;">
+                        Customize your resume for each job application by mirroring the language and requirements from the job description.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="card" style="text-align: center;">
+                <h2>Next Steps</h2>
+                <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
+                    <a href="{{ url_for('upload_resume') }}" class="btn">Analyze Another Resume</a>
+                    <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Home</a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>AI Resume Analyzer &copy; 2024 | Note: This analysis is for guidance purposes only</p>
+        </footer>
+    </div>
+</body>
+</html>
