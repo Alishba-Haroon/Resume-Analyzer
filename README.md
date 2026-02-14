@@ -78,13 +78,10 @@ http://127.0.0.1:5000/
 ````
 ## 📊 Screenshots
 
-(Upload these images inside a folder named screenshots/ in your repository)
-
-After uploading images, use this format:
 
 
 <p align="center">
-  <b> Home Page</b><br/><br/>
+  <b> **Home Page** </b><br/><br/>
   <img src="https://github.com/Alishba-Haroon/Resume-Analyzer/blob/main/resume_analyzer/static/css/main.png" alt="Home Page" width="700"/>
 </p>
 
