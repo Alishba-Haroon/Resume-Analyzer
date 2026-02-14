@@ -4,17 +4,17 @@ AI-powered Resume Analyzer built with Flask that evaluates resumes, extracts ski
 
 ## 🚀 Features
 
-Resume upload (PDF/DOCX support)
+* Resume upload (PDF/DOCX support)
 
-Automatic skill extraction using NLP
+* Automatic skill extraction using NLP
 
-Job-skill matching system
+* Job-skill matching system
 
-Resume scoring logic
+* Resume scoring logic
 
-History tracking of analyzed resumes
+* History tracking of analyzed resumes
 
-Clean UI with Flask templates
+* Clean UI with Flask templates
 
 ## 🛠 Tech Stack
 
@@ -98,15 +98,15 @@ After uploading images, use this format:
 
 ## 📈 Future Improvements
 
-Deploy on Render / Railway
+* Deploy on Render / Railway
 
-Add JWT authentication
+* Add JWT authentication
 
-Improve NLP accuracy with spaCy
+* Improve NLP accuracy with spaCy
 
-Add ATS score visualization charts
+* Add ATS score visualization charts
 
-Convert to REST API architecture
+* Convert to REST API architecture
 
 ## 👩‍💻 Author
 
