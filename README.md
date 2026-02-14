@@ -84,17 +84,17 @@ http://127.0.0.1:5000/
   <img src="https://github.com/Alishba-Haroon/Resume-Analyzer/blob/main/resume_analyzer/static/css/main.png" width="700"/>
 </p>
 
-<h3 align="center">Background Design</h3>
+<h3 align="left">Background Design</h3>
 <p align="center">
   <img src="https://github.com/Alishba-Haroon/Resume-Analyzer/blob/main/resume_analyzer/static/css/upload.png" width="700"/>
 </p>
 
-<h3 align="center">Output View</h3>
+<h3 align="left">Output View</h3>
 <p align="center">
   <img src="https://github.com/Alishba-Haroon/Resume-Analyzer/blob/main/resume_analyzer/static/css/result.png" width="700"/>
 </p>
 
-<h3 align="center">Analysis</h3>
+<h3 align="left">Analysis</h3>
 <p align="center">
   <img src="https://github.com/Alishba-Haroon/Resume-Analyzer/blob/main/resume_analyzer/static/css/analysis.png" width="700"/>
 </p>
