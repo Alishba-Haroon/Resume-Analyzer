@@ -18,15 +18,15 @@ Clean UI with Flask templates
 
 ## 🛠 Tech Stack
 
-Backend: Python, Flask
+**Backend**: Python, Flask
 
-Database: SQLite
+**Database**: SQLite
 
-NLP Processing: Custom skill extractor
+**NLP Processing**: Custom skill extractor
 
-Frontend: HTML, CSS
+**Frontend**: HTML, CSS
 
-Data Handling: CSV (skills dataset)
+**Data Handling**: CSV (skills dataset)
 
 ## 📁 Project Structure
 ```bash
@@ -110,7 +110,7 @@ Convert to REST API architecture
 
 ## 👩‍💻 Author
 
-Alishba Haroon
-Aspiring AI Engineer | Data Science Enthusiast
+**Alishba Haroon**
+**Aspiring AI Engineer | Data Science Enthusiast**
 
-GitHub: https://github.com/Alishba-Haroon
+**GitHub**: https://github.com/Alishba-Haroon
