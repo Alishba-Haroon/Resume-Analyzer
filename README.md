@@ -79,25 +79,24 @@ http://127.0.0.1:5000/
 ## 📊 Screenshots
 
 
-
+<h3 align="center">Home Page</h3>
 <p align="center">
-  <b> **Home Page** </b><br/><br/>
-  <img src="https://github.com/Alishba-Haroon/Resume-Analyzer/blob/main/resume_analyzer/static/css/main.png" alt="Home Page" width="700"/>
+  <img src="https://github.com/Alishba-Haroon/Resume-Analyzer/blob/main/resume_analyzer/static/css/main.png" width="700"/>
 </p>
 
+<h3 align="center">Background Design</h3>
 <p align="center">
-  <b> Background Design</b><br/><br/>
-  <img src="https://github.com/Alishba-Haroon/Resume-Analyzer/blob/main/resume_analyzer/static/css/upload.png" alt="Background Design" width="700"/>
+  <img src="https://github.com/Alishba-Haroon/Resume-Analyzer/blob/main/resume_analyzer/static/css/upload.png" width="700"/>
 </p>
 
+<h3 align="center">Output View</h3>
 <p align="center">
-  <b> Output View</b><br/><br/>
-  <img src="https://github.com/Alishba-Haroon/Resume-Analyzer/blob/main/resume_analyzer/static/css/result.png" alt="Result" width="700"/>
+  <img src="https://github.com/Alishba-Haroon/Resume-Analyzer/blob/main/resume_analyzer/static/css/result.png" width="700"/>
 </p>
 
+<h3 align="center">Analysis</h3>
 <p align="center">
-  <b> Analysis </b><br/><br/>
-  <img src="https://github.com/Alishba-Haroon/Resume-Analyzer/blob/main/resume_analyzer/static/css/analysis.png" alt="Background Design" width="700"/>
+  <img src="https://github.com/Alishba-Haroon/Resume-Analyzer/blob/main/resume_analyzer/static/css/analysis.png" width="700"/>
 </p>
 
 
