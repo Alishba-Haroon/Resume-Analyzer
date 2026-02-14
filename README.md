@@ -79,7 +79,7 @@ http://127.0.0.1:5000/
 ## 📊 Screenshots
 
 
-<h3 align="center">Home Page</h3>
+<h3 align="left">Home Page</h3>
 <p align="center">
   <img src="https://github.com/Alishba-Haroon/Resume-Analyzer/blob/main/resume_analyzer/static/css/main.png" width="700"/>
 </p>
