@@ -82,19 +82,27 @@ http://127.0.0.1:5000/
 
 After uploading images, use this format:
 
-## 📌 Home Page
-![Home Page](screenshots/home.png)
 
-## 📌 Upload Resume
-![Upload](screenshots/upload.png)
+<p align="center">
+  <b> Home Page</b><br/><br/>
+  <img src="https://github.com/Alishba-Haroon/Resume-Analyzer/blob/main/resume_analyzer/static/css/main.png" alt="Home Page" width="700"/>
+</p>
 
-## 📌 Result Page
-![Result](screenshots/result.png)
+<p align="center">
+  <b> Background Design</b><br/><br/>
+  <img src="https://github.com/Alishba-Haroon/Resume-Analyzer/blob/main/resume_analyzer/static/css/upload.png" alt="Background Design" width="700"/>
+</p>
 
-## 📌 History Page
-![History](screenshots/history.png)
+<p align="center">
+  <b> Output View</b><br/><br/>
+  <img src="https://github.com/Alishba-Haroon/Resume-Analyzer/blob/main/resume_analyzer/static/css/result.png" alt="Result" width="700"/>
+</p>
 
-⚠ Make sure image names match exactly.
+<p align="center">
+  <b> Analysis </b><br/><br/>
+  <img src="https://github.com/Alishba-Haroon/Resume-Analyzer/blob/main/resume_analyzer/static/css/analysis.png" alt="Background Design" width="700"/>
+</p>
+
 
 ## 📈 Future Improvements
 
