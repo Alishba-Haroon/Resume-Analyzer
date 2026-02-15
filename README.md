@@ -2,7 +2,7 @@
 
 AI-powered Resume Analyzer built with Flask that evaluates resumes, extracts skills, matches them with job requirements, and provides insights for ATS optimization.
 
-## 🚀 Features
+## Features
 
 * Resume upload (PDF/DOCX support)
 
@@ -16,7 +16,7 @@ AI-powered Resume Analyzer built with Flask that evaluates resumes, extracts ski
 
 * Clean UI with Flask templates
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 **Backend**: Python, Flask
 
@@ -28,7 +28,7 @@ AI-powered Resume Analyzer built with Flask that evaluates resumes, extracts ski
 
 **Data Handling**: CSV (skills dataset)
 
-## 📁 Project Structure
+##  Project Structure
 ```bash
 Resume_Analyzer/
 │
@@ -59,7 +59,7 @@ Resume_Analyzer/
 ````
 ---
 
-## ⚙️ Installation & Setup
+##  Installation & Setup
 ````bash
 git clone https://github.com/Alishba-Haroon/Resume-Analyzer.git
 cd Resume-Analyzer
@@ -76,7 +76,7 @@ App will run at:
 ````bash
 http://127.0.0.1:5000/
 ````
-## 📊 Screenshots
+##  Screenshots
 
 
 <h3 align="left">Home Page</h3>
@@ -100,7 +100,7 @@ http://127.0.0.1:5000/
 </p>
 
 
-## 📈 Future Improvements
+##  Future Improvements
 
 * Deploy on Render / Railway
 
@@ -112,7 +112,7 @@ http://127.0.0.1:5000/
 
 * Convert to REST API architecture
 
-## 👩‍💻 Author
+##  Author
 
 **Alishba Haroon**
 **Aspiring AI Engineer | Data Science Enthusiast**
